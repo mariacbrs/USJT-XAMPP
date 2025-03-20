@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aula01</title>
+</head>
+<body>
+    <h1>Olá pessoal</h1>
+    <h3 id="texto"></h3>
+    <button onclick="goodMorning()">Dar Bom Dia</button>
+
+    <hr>
+
+    <input type="number" id="txtValor" />
+    <button onclick="generate()">Gerar</button>
+    <br>
+    <div id="divValores">
+    </div>
+
+    <hr>
+
+    <!-- EXERCÍCIO: MINI CALCULADORA. CONDIÇÃO: QUANDO RESULTADO FOR NEGATIVO -> FUNDO FICA VERMELHO, POSITIVO -> FUNDO FICA VERDE -->
+
+    <h1>EXERCÍCIO</h1>
+
+    <label for="value01">Insira o valor:</label>
+    <input type="number" id="value01" />
+    <br>
+    <br>
+    <label for="value02">Insira o valor:</label>
+    <input type="number" id="value02" />
+    <br>
+    <br>
+    <button id="sum" onclick="addition()">+</button>
+    <button id="subtract" onclick="subtraction()">-</button>
+    <button id="multiplicate" onclick="multiplication()">X</button>
+    <button id="divide" onclick="division()">/</button>
+    <br>
+    <br>
+    <label for="result">Resultado:</label>
+    <div id="result"></div>
+
+
+    <script>
+        function goodMorning(){
+            document.getElementById("texto").innerHTML = "Bom dia! <u>galerinha</u>";
+        }
+
+        function generate(){
+            var valor = document.getElementById("txtValor").value;
+            if(isNaN(valor)){
+                alert("O campo valor só pode receber números");
+            }else if( valor < 0){
+                alert("O campo valor só pode receber números positivos");
+            }else if( valor == 0){
+                alert("O campo valor só pode receber números maior que 0");
+            }else{
+                var numeros = "";
+                for(i = 1; i <= valor; i++){
+                    numeros += i + "<br>";
+                }
+                var divcontent = document.getElementById("divValores");
+                divcontent.innerHTML = numeros;
+                divcontent.style.background = "yellow";
+                divcontent.style.width = "50%";
+                divcontent.style.margin = "20px";
+                divcontent.style.textAlign = "center";
+            }
+        }
+
+        // Exercício
+
+        
+
+        function addition(){ 
+            var num1 = parseInt(document.getElementById("value01").value);
+            var num2 = parseInt(document.getElementById("value02").value);
+
+            var sum = num1 + num2;
+            var total = document.getElementById("result");
+            total.innerHTML = sum;
+            
+            if(sum < 0){
+                total.style.background = "red";
+            }else{
+                total.style.background = "green";
+            }
+        }
+        function subtraction(){
+            var num1 = parseInt(document.getElementById("value01").value);
+            var num2 = parseInt(document.getElementById("value02").value);
+
+            var subtraction = num1 - num2;
+            var total = document.getElementById("result");
+            total.innerHTML = subtraction;
+            
+            if(subtraction < 0){
+                total.style.background = "red";
+            }else{
+                total.style.background = "green";
+            }
+        }
+        function multiplication(){
+            var num1 = parseInt(document.getElementById("value01").value);
+            var num2 = parseInt(document.getElementById("value02").value);
+
+            var multiplication = num1 * num2;
+            var total = document.getElementById("result");
+            total.innerHTML = multiplication;
+            
+            if(multiplication < 0){
+                total.style.background = "red";
+            }else{
+                total.style.background = "green";
+            }
+        }
+        function division(){
+            var num1 = parseInt(document.getElementById("value01").value);
+            var num2 = parseInt(document.getElementById("value02").value);
+
+            var division = num1 / num2;
+            var total = document.getElementById("result");
+            total.innerHTML = division;
+            
+            if(division < 0){
+                total.style.background = "red";
+            }else{
+                total.style.background = "green";
+            }
+        }
+    </script>
+</body>
+</html>
