@@ -24,6 +24,23 @@ function lerJSON(){
 
 }
 
+function excluir(id){
+    var req = new XMLHttpRequest();
+    
+    req.onreadystatechange = function(){
+        if( this.readyState == 4 && this.status == 200){
+            objJSON = JSON.parse(this.responseText);
+            if(objJSON.resposta){
+                alert(objJSON.resposta);
+                lerProdutos();
+            }
+        }
+    }
+
+    req.open( "GET" , "server.php?excluir&id=" + id , true );
+    req.send(); 
+}
+
 function lerProdutos(){
     var req = new XMLHttpRequest();
 
@@ -38,6 +55,7 @@ function lerProdutos(){
                 txt +='<th>ID</th>';
                 txt +='<th>Nome</th>';
                 txt +='<th>Preço</th>';
+                txt +='<th>Excluir</th>';
                 txt += '</tr>';
 
                 produtos = objJSON.produtos;
@@ -47,6 +65,7 @@ function lerProdutos(){
                     txt += '<td>'+ prod.id + '</td>';
                     txt += '<td>'+ prod.nome + '</td>';
                     txt += '<td>'+ prod.preco + '</td>';
+                    txt += '<td> <button onclick="excluir(' + prod.id + ')"> X </button></td>';
                     txt += '</tr>';
                 })
                 txt += '</table>';

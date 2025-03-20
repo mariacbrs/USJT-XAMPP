@@ -1,57 +1,75 @@
 <?php
- 
-    header("Content-type: application/json" );
 
-    $local = "localhost";
-    $user = "root";
-    $senha = "mcbrs";
-    $banco = "loja";
-    
-    if( isset( $_REQUEST["buscar"] ) ){
-        try{
-            $conn = mysqli_connect($local , $user , $senha , $banco);
- 
-            if( $conn ){
-                $query = "SELECT * FROM produto ORDER BY nome";
-                $result = mysqli_query( $conn , $query );
-                $linhas = array();
-                while( $row = mysqli_fetch_assoc( $result ) ){
-                    $linhas[] = $row;
-                }
-                mysqli_close( $conn );
-                echo '{ "produtos" : ' . json_encode($linhas) . ' } ';
-            }else{
-                echo '{ "resposta" : "Erro ao conectar com o banco de dados" } ';
+header("Content-type: application/json");
+
+$local = "localhost";
+$user = "root";
+$senha = "mcbrs";
+$banco = "loja";
+
+if (isset($_REQUEST["buscar"])) {
+    try {
+        $conn = mysqli_connect($local, $user, $senha, $banco);
+
+        if ($conn) {
+            $query = "SELECT * FROM produto ORDER BY nome";
+            $result = mysqli_query($conn, $query);
+            $linhas = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                $linhas[] = $row;
             }
-        }catch( \Throwable $th ){
-            echo '{ "resposta" : "Erro no servidor" } ';
-        }  
+            mysqli_close($conn);
+            echo '{ "produtos" : ' . json_encode($linhas) . ' } ';
+        } else {
+            echo '{ "resposta" : "Erro ao conectar com o banco de dados" } ';
+        }
+    } catch (\Throwable $th) {
+        echo '{ "resposta" : "Erro no servidor" } ';
     }
-    if( isset( $_REQUEST["inserir"] ) ){
-        try{
-            $conn = mysqli_connect($local , $user , $senha , $banco);
- 
-            if( $conn ){
+}
+if (isset($_REQUEST["inserir"])) {
+    try {
+        $conn = mysqli_connect($local, $user, $senha, $banco);
 
-                $nome = $_POST["name"];
-                $preco = $_POST["price"];
+        if ($conn) {
 
-                // preco é valor numerico por isso não vai entre ''
-                $query = "INSERT INTO produto(nome, preco) VALUES ('$nome', $preco)";
+            $nome = $_POST["name"];
+            $preco = $_POST["price"];
 
-                mysqli_query( $conn , $query );
-                $id = mysqli_insert_id( $conn );
+            // preco é valor numerico por isso não vai entre ''
+            $query = "INSERT INTO produto(nome, preco) VALUES ('$nome', $preco)";
 
-                mysqli_close( $conn );
-                echo '{ "id" : '.$id.' } ';
-            }else{
-                echo '{ "resposta" : "Erro ao conectar com o banco de dados" } ';
-            }
-        }catch( \Throwable $th ){
-            echo '{ "resposta" : "Erro no servidor" } ';
-        }  
+            mysqli_query($conn, $query);
+            $id = mysqli_insert_id($conn);
+
+            mysqli_close($conn);
+            echo '{ "id" : ' . $id . ' } ';
+        } else {
+            echo '{ "resposta" : "Erro ao conectar com o banco de dados" } ';
+        }
+    } catch (\Throwable $th) {
+        echo '{ "resposta" : "Erro no servidor" } ';
     }
+}
+if (isset($_REQUEST["excluir"])) {
+    try {
+        $conn = mysqli_connect($local, $user, $senha, $banco);
 
-    
- 
-?>
+        if ($conn) {
+
+            $id = $_GET["id"];
+
+            $query = "DELETE FROM produto WHERE id= $id";
+
+            mysqli_query($conn, $query);
+
+            mysqli_close($conn);
+
+            echo '{ "resposta" : "Produto excluido com sucesso" } ';
+        } else {
+            echo '{ "resposta" : "Erro ao conectar com o banco de dados" } ';
+        }
+    } catch (\Throwable $th) {
+        echo '{ "resposta" : "Erro no servidor" } ';
+    }
+}
