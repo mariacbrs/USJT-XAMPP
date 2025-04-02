@@ -1,0 +1,79 @@
+<!-- JUNTAR OS DOIS CÓDIGOS PROGRESS BAR + MESSAGE -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Barra de Progresso</title>
+    <style>
+        .progress-bar {
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+        }
+        .progress {
+            width: 0%;
+            height: 15px;
+            background-color: #4caf50;
+        }
+        .success-message {
+            display: none;
+          color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" id="progress-bar">
+        <div class="progress" id="progress"></div>
+        <p>Aguarde! O site está sendo carregado</p>
+    </div>
+
+    <form id="myForm">
+        <input type="text" name="name" placeholder="Nome" required>
+        <input type="tel" name="tel" placeholder="Telefone" required>
+        <select  name="A-P" id="dep" required>
+            <optgroup>
+                <option value="-" disabled selected>Escolha uma opção</option>
+                <option value="aluno">Aluno</option>
+                <option value="professor">Professor</option>
+            </optgroup>
+        </select>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <div class="success-message" id="successMessage">Formulário enviado com sucesso!</div>
+
+    <script>
+        const form = document.getElementById('myForm');
+        const successMessage = document.getElementById('successMessage');
+        const progressBar = document.getElementById('progress');
+        const progressDiv = document.getElementById('progress-bar');
+        form.style.display = 'none';
+
+        let progress = 0;
+
+        function updateProgressBar(percentage) {
+            progressBar.style.width = percentage + '%';
+        }
+
+        // Simular progresso
+        const interval = setInterval(() => {
+            if (progress >= 100) {
+                clearInterval(interval);
+                progressDiv.style.display = 'none';
+                form.style.display = 'inline-block';
+            } else {
+                progress += 10;
+                updateProgressBar(progress);
+            }
+        }, 500);
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            successMessage.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
