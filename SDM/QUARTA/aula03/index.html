@@ -6,6 +6,29 @@
     <title>API</title>
 </head>
 <body>
-    
+     <h1>Aula 03</h1>
+     <script>
+        let url = "https://geek-jokes.sameerkumar.website/api?format=json";
+        let promise = fetch(url);
+        console.log("promise:", promise);
+
+        // Arrow Function (=>) substitui a palavra function 
+        promise.then((resp) =>{
+            let prom = resp.json();
+            console.log("resp:", prom);
+            prom.then((obj)=>(
+                console.log("obj:", obj)
+            ))
+        });
+        console.log("test");
+
+        async function Req() {
+            let resp = await fetch(url);
+            let obj = await resp.json();
+            console.log("obj:", obj);
+        };
+
+        Req();
+     </script>
 </body>
 </html>
