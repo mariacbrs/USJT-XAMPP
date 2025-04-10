@@ -1,0 +1,20 @@
+.editor-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.toolbar {
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    margin-right: 5px;
+}
+
+.editor {
+    border: 1px solid #ccc;
+    min-height: 300px;
+    padding: 10px;
+    background-color: #fff;
+}
