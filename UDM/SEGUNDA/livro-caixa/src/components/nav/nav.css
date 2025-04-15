@@ -1,0 +1,24 @@
+/* Nav */
+.nav {
+    display: flex;
+    position: fixed;
+    top: 60px;     /* imediatamente abaixo do header */
+    left: 0;
+    width: 100%;
+    background-color: #eaeaea;
+    padding: 8px 16px;
+    gap: 16px;
+    z-index: 999;     /* abaixo do header, acima do conteúdo */
+    border-bottom: 1px solid #ccc;
+}
+
+.nav a {
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    color: rgb(15, 15, 138);
+    transition: 0.4s;
+}

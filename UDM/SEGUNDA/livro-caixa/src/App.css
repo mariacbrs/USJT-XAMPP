@@ -5,57 +5,82 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Header */
-.header {
-  background-color: rgb(164, 164, 164);
-  color: blueviolet;
+/* main content */
+
+.main{
+  margin-top: 100px;
+  padding-top: 120px;
+  margin-bottom: 100px;
+}
+
+.main-content{
   padding: 16px;
 }
 
-.header-title {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-/* Footer */
-.footer {
-  background-color: #eaeaea;
-  text-align: center;
-  padding: 16px;
-  margin-top: 24px;
-}
-
-/* Nav */
-.nav {
-  background-color: #eaeaea;
-  padding: 8px 16px;
+.products-grid {
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 32px;
 }
 
-.nav a {
-  text-decoration: none;
-  color: blueviolet;
-  font-weight: bold;
+
+/* FORM */
+
+.loginP {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
 }
 
-.nav a:hover {
-  color: rgb(217, 92, 217);
-  transition: 0.4s;
+form {
+  background-color: rgb(25, 163, 255);
+  width: 22%;
+  height: 45vh;
+  border-radius: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Main content */
-.main-content {
-  padding: 16px;
+.Iwrap{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 27vh;
+  padding-bottom: 4vh;
 }
 
-/* Pages */
-.page {
-  margin-top: 16px;
+.Iwrap > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 12vh;
 }
 
-.page-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 8px;
+form input {
+  height: 5vh;
+  border: 2px solid gainsboro;
+  border-radius: 0.5vh;
+}
+
+input::placeholder {
+  padding-left: 5px;
+}
+
+#email::placeholder {
+  color: black;
+}
+
+form button {
+  background-color: rgb(68, 68, 247);
+  height: 5vh;
+  border: 1px solid  rgb(68, 68, 247);
+  border-radius: 0.5vh;
+  width: 70%;
+  color: white;
 }

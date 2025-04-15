@@ -1,10 +1,35 @@
 // pages/Home.tsx
+import { useEffect, useState } from "react";
+import { Card } from "../components/card/Card";
+import { fetchProducts, Product } from "../services/productService";
+import { Spinner } from "../components/spinner/Spinner";
+import './page.css';
+
 export function Home() {
-    return (
-      <section className="page">
-        {/* <h2 className="page-title">Home</h2> */}
-        <p>Welcome!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, incidunt aperiam amet commodi dolorem debitis cupiditate ea, odit, similique doloribus pariatur! Maxime velit nisi a impedit reprehenderit rerum aspernatur. Excepturi facilis a qui, aspernatur ullam sed aliquid? Quia eligendi libero quidem unde sint ex dolorum eaque nobis, in exercitationem quos. Consequatur, ducimus beatae, voluptatibus eius, labore neque nisi accusantium magnam doloremque delectus voluptatum consectetur expedita id sit eligendi sed soluta molestiae eaque maxime incidunt ullam. Similique adipisci distinctio, provident quae necessitatibus magnam et dolorem consequatur, illo nisi facere aliquam illum officia nesciunt? Aliquid praesentium voluptas aperiam unde, dolor quidem delectus iste voluptatum ducimus molestias, molestiae nulla dicta? Harum illo minus dicta temporibus repellat voluptas quisquam odit vitae iusto, explicabo assumenda corrupti pariatur incidunt animi nihil nam vel consectetur dignissimos libero dolorum eligendi expedita aliquid. Odit, fugit! Repellat, perferendis! Corporis, vitae aliquam natus magni sequi voluptatibus autem. Temporibus excepturi molestias laborum!</p>
-      </section>
-    );
-  }
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProducts().then((data) => {
+      setProducts(data);
+      setLoading(false);
+    });
+  }, []);
+  return (
+    <section>
+      <h2 className="page-title">Bem-vindo à DevImpact Solutions</h2>
+      <p><strong>DevImpact Solutions</strong>, é uma empresa especializada em soluções digitais de alto impacto.</p>
+      <p>Confira nossos sistemas e plataformas em destaque:</p>
+
+      {loading ? (
+        <Spinner type="rodando" size="grande" colorClass="azul" blockScreen />
+      ) : (
+        <div className="products-grid">
+          {products.map((item) => (
+            <Card key={item.id} {...item} />
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
