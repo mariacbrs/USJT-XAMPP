@@ -1,0 +1,41 @@
+{
+  "frutas": {
+    "abacaxi": {
+      "id": 1,
+      "nome": "pineapple",
+      "cor": "amarelo"
+    },
+    "banana": {
+      "id": 2,
+      "nome": "banana",
+      "cor": "creme"
+    },
+    "ameixa": {
+      "id": 3,
+      "nome": "ameixa",
+      "cor": "vermelha"
+    },
+    "acerola": {
+      "id": 4,
+      "nome": "acerola",
+      "cor": "vermelha"
+    }
+  },
+  "vegetais": {
+    "tomate": {
+      "id": 1,
+      "nome": "tomate",
+      "cor": "vermelho"
+    },
+    "alface": {
+      "id": 2,
+      "nome": "alface",
+      "cor": "verde"
+    },
+    "batata": {
+      "id": 3,
+      "nome": "batata",
+      "cor": "amarelo"
+    }
+  }
+}
