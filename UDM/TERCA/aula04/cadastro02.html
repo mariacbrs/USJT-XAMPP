@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prevenção de Erros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:disabled {
+            background: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro Seguro</h2>
+        <form id="cadastroForm">
+            <input type="text" id="nome" placeholder="Nome Completo" required>
+            <div class="error" id="nomeError">O nome deve ter pelo menos 3 caracteres.</div>
+            <input type="email" id="email" placeholder="E-mail" required>
+            <div class="error" id="emailError">Digite um e-mail válido.</div>
+            <input type="password" id="password" placeholder="Senha" required minlength="6">
+            <div class="error" id="passwordError">A senha deve ter pelo menos 6 caracteres.</div>
+            <button class="btn" id="submitBtn" disabled>Cadastrar</button>
+        </form>
+    </div>
+    
+    <script>
+        const nome = document.getElementById("nome");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const nomeError = document.getElementById("nomeError");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+        const submitBtn = document.getElementById("submitBtn");
+        
+        function validarFormulario() {
+            let nomeValido = nome.value.length >= 3;
+            let emailValido = email.checkValidity();
+            let senhaValida = password.value.length >= 6;
+            
+            nomeError.style.display = nomeValido ? "none" : "block";
+            emailError.style.display = emailValido ? "none" : "block";
+            passwordError.style.display = senhaValida ? "none" : "block";
+            
+            submitBtn.disabled = !(nomeValido && emailValido && senhaValida);
+        }
+        
+        nome.addEventListener("input", validarFormulario);
+        email.addEventListener("input", validarFormulario);
+        password.addEventListener("input", validarFormulario);
+    </script>
+</body>
+</html>
