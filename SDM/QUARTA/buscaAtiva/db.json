@@ -1,0 +1,97 @@
+{
+  "superHeroi": {
+    "Homem-Aranha": {
+      "id": 1,
+      "heroi": "Homem-Aranha",
+      "nome": "Peter Park",
+      "poderes": {
+        "soltar teia": 3,
+        "andar em paredes": 2,
+        "sentido apurado": 1
+      }
+    },
+    "Super-Homem": {
+      "id": 2,
+      "heroi": "Super-Homem",
+      "nome": "Clark Kent",
+      "poderes": {
+        "voar": 3,
+        "força": 5,
+        "visão de raio X": 4,
+        "sopro congelante": 4
+      }
+    },
+    "Capitão América": {
+      "id": 3,
+      "heroi": "Capitão América",
+      "nome": "Steven Rogers",
+      "poderes": {
+        "supersoldado": 3,
+        "escudo": 3
+      }
+    },
+    "Flash": {
+      "id": 4,
+      "heroi": "Flash",
+      "nome": "Barry Allen",
+      "poderes": {
+        "velocidade": 5
+      }
+    },
+    "Lanterna-Verde": {
+      "id": 5,
+      "heroi": "Lanterna-Verde",
+      "nome": "Hal Jordan",
+      "poderes": {
+        "anel mágico": 5
+      }
+    },
+    "Homem de Ferro": {
+      "id": 6,
+      "heroi": "Homem de Ferro",
+      "nome": "Tony Stark",
+      "poderes": {
+        "dispositivos eletrônicos": 2,
+        "armadura": 4
+      }
+    }
+  },
+  "viloes": {
+    "Duende Verde": {
+      "id": 7,
+      "vilao": "Duende Verde",
+      "nome": "Norman Osbourne",
+      "poderes": {
+        "Força": 5
+      }
+    },
+    "Lex Luthor": {
+      "id": 8,
+      "vilao": "Lex Luthor",
+      "nome": "Lex Luthor",
+      "poderes": {
+        "Mente aguçada": 5
+      }
+    },
+    "Bizarro": {
+      "id": 9,
+      "vilao": "Bizarro",
+      "nome": "Bizarro",
+      "poderes": {
+        "voar": 3,
+        "força": 5,
+        "visão de raio X": 4,
+        "sopro congelante": 4
+      }
+    },
+    "Octopus": {
+      "id": 10,
+      "vilao": "Octopus",
+      "nome": "Otto Octavius",
+      "poderes": {
+        "velocidade": 1,
+        "tentáculos indestrutíveis": 5
+      }
+    }
+  }
+}
